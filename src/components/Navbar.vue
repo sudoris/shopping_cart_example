@@ -1,27 +1,38 @@
 <template>
-  <div>       
-    <nav>                
-      <ul class="nav bg-dark justify-content-center">
-        <li class="nav-item">
-          <!-- <router-link to="">
-            <span></span>
-          </router-link>  -->
-          <a class="nav-link" href="#">Shop</a>
+  <div class="wrapper">     
+
+    <nav>
+      <ul>
+        <li>
+          <router-link to="/">
+              All Products
+          </router-link> 
         </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#"><i class="fas fa-shopping-cart"></i></a>
-        </li>        
-      </ul>  
+         <li>
+          <router-link to="{ name: 'checkout', params: { items: inCart } }">
+              {{ numberInCart }} <i class="fas fa-shopping-cart"></i>
+          </router-link> 
+        </li>
+      </ul>
     </nav>  
+
   </div>
 </template>
 
 <script>
 export default {
   name: "Navbar",
+  props: [
+    'inCart'
+  ],
   data() {
     return{
 
+    }
+  },
+  computed: {
+     numberInCart() {
+      return this.inCart.length;
     }
   }
 
@@ -29,7 +40,42 @@ export default {
 </script>
 
 <style>
-a {
-  color: #fff !important;
+.wrapper {
+  width: 100%;
+  max-width: 960px;
+  margin: 0 auto;
 }
+
+nav {
+  background: #333;  
+}
+
+nav ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+nav a {
+  text-decoration: none;
+  text-align: center;
+  color: #fff;
+  display: block;
+  padding: 10px;
+}
+
+nav a:hover {
+  background-color: #555;
+}
+
+@media screen and (min-width: 768px) {
+  nav ul {
+    display: flex;
+    justify-content: center;
+  }
+
+  nav li {
+    
+  }
+}
+
 </style>

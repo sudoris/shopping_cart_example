@@ -1,6 +1,7 @@
 <template>
   <div>
-     Hello
+    <h2>Shopping cart under construction</h2>
+    {{ inCart }}
   </div>
 </template>
 
@@ -8,7 +9,7 @@
 export default {
   name: 'ShoppingCart',
   props: [
-    "data"
+    'inCart'
   ],
   data() {
     return {

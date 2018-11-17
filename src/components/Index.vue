@@ -1,18 +1,11 @@
 <template>
-  <div>     
+  <div class="products-wrapper">      
 
-    <Navbar></Navbar>    
-    
-    <div class="main-content">
-      <div class="container-fluid">
-        <div class="row">        
-            <div v-for="(product, index) in products" :key="index" class="col-md-4">            
-              <Product :data="product" @addToCart="addToCart"></Product>        
-            </div>           
-        </div>  
-      </div>
-    </div>
-    <!-- </div> -->
+    <div class="products">        
+      <div class="product" v-for="(item, index) in products" :key="index">            
+        <Product :data="item"></Product>        
+      </div>                        
+    </div>    
 
   </div>
 </template>
@@ -20,14 +13,14 @@
 <script>
 import Product from "./Product"
 // import ShoppingCart from "./ShoppingCart"
-import Navbar from "./Navbar"
+
 
 export default {
   name: 'Index',
   components: {
     Product,
     // ShoppingCart,
-    Navbar
+    
   },       
   data() {
     return {      
@@ -39,24 +32,30 @@ export default {
         { id: 5, name: 'Cat Food', price: 44, rating: 5, url: "https://s7d2.scene7.com/is/image/PetSmart/5149891?$sclp-prd-main_large$" },
         { id: 6, name: 'Canned Tuna 6 Pack', price: 88, rating: 3, url: "https://s7d2.scene7.com/is/image/PetSmart/5149891?$sclp-prd-main_large$" },
         { id: 7, name: 'Pair of Socks', price: 12, rating: 1, url: "https://s7d2.scene7.com/is/image/PetSmart/5149891?$sclp-prd-main_large$" }        
-      ],
-      inCart: [
-
-      ]      
+      ]          
     }
-  },
-  methods: {
-    addToCart(id) {
-      this.inCart.push(id)
-    }
-  },
+  }  
 }
 </script>
 
 <style>
-.main-content {
-  margin: 1.5rem 4rem;
+.products-container {
+  width: 100%;
+  max-width: 960px;
+  margin: 0 auto;
 }
 
+.products {
+  width: 90%;
+  margin: 0 auto;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
 
+.product {  
+  margin: 1% 2%;
+  width: 29%;
+  text-align: center;
+}
 </style>
