@@ -18,5 +18,6 @@ export default new Router({
       props: true,  
       component: ShoppingCart
     }
+    
   ]
 })

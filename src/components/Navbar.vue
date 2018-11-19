@@ -3,15 +3,20 @@
 
     <nav>
       <ul>
-        <li>
+        <li>          
           <router-link to="/">
               All Products
           </router-link> 
         </li>
          <li>
-          <router-link to="{ name: 'checkout', params: { items: inCart } }">
+          <!-- <router-link to="{ name: 'checkout', params: { items: { inCart }}">
               {{ numberInCart }} <i class="fas fa-shopping-cart"></i>
-          </router-link> 
+          </router-link>  -->         
+          
+          <div class="cart" @click="loadCart">
+            {{ numberInCart }} <i class="fas fa-shopping-cart"></i>
+          </div>
+
         </li>
       </ul>
     </nav>  
@@ -30,6 +35,14 @@ export default {
 
     }
   },
+  methods: {
+    loadCart() {      
+      this.$router.push({
+        name: 'checkout',
+        params: { inCart: this.inCart }
+      })
+    }
+  },
   computed: {
      numberInCart() {
       return this.inCart.length;
@@ -41,18 +54,22 @@ export default {
 
 <style>
 .wrapper {
-  width: 100%;
-  max-width: 960px;
+  width: 100%;  
   margin: 0 auto;
 }
 
-nav {
+nav {  
   background: #333;  
 }
 
 nav ul {
   list-style-type: none;
   padding: 0;
+}
+
+nav ul li {
+  margin: 0 2rem;
+  font-size: 1.5rem;
 }
 
 nav a {
@@ -64,6 +81,18 @@ nav a {
 }
 
 nav a:hover {
+  background-color: #555;
+}
+
+.cart {  
+  text-align: center;
+  color: #fff;
+  display: block;
+  padding: 10px;
+}
+
+.cart:hover {
+  cursor: pointer;
   background-color: #555;
 }
 

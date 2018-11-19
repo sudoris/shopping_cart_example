@@ -1,19 +1,25 @@
 <template>
-  <div>
-    <h2>Shopping cart under construction</h2>
-    {{ inCart }}
+  <div class="products-wrapper">             
+    <div class="products">        
+      <div class="product" v-for="(item, index) in inCart" :key="index">            
+        <Product :data="item"></Product>        
+      </div>                        
+    </div>          
   </div>
 </template>
 
 <script>
+import Product from "./Product"
+
 export default {
   name: 'ShoppingCart',
+  components: { Product },
   props: [
-    'inCart'
+    'inCart'       
   ],
   data() {
     return {
-
+      
     }
   }  
 }

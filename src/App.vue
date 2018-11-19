@@ -1,8 +1,10 @@
 <template>
   <div id="app">   
-    <Navbar :inCart="inCart"></Navbar>    
 
-    <router-view></router-view>
+    <Navbar :inCart="inCart"></Navbar>       
+
+    <router-view></router-view>    
+
   </div>
 </template>
 
@@ -22,10 +24,10 @@ export default {
   },
   computed: {
     numberInCart() {
-      return this.inCart.length;
+      return this.inCart.length;      
     }
   },
-  created() {
+  created() {    
     EventBus.$on('addToCart', (product) => {      
       this.inCart.push(product)    
     })

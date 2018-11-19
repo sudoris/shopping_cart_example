@@ -5,7 +5,9 @@
       <div class="product" v-for="(item, index) in products" :key="index">            
         <Product :data="item"></Product>        
       </div>                        
-    </div>    
+    </div>  
+
+    <Shopping v-if="showCart"></Shopping>  
 
   </div>
 </template>
@@ -18,12 +20,13 @@ import Product from "./Product"
 export default {
   name: 'Index',
   components: {
-    Product,
+    Product
     // ShoppingCart,
     
   },       
   data() {
-    return {      
+    return {  
+      showCart: false,    
       products: [
         { id: 1, name: 'Cup Noodles', price: 50, rating: 4, url: "https://s7d2.scene7.com/is/image/PetSmart/5149891?$sclp-prd-main_large$" },        
         { id: 2, name: 'Kleenex', price: 98, rating: 5, url: "https://s7d2.scene7.com/is/image/PetSmart/5149891?$sclp-prd-main_large$" },
@@ -32,7 +35,7 @@ export default {
         { id: 5, name: 'Cat Food', price: 44, rating: 5, url: "https://s7d2.scene7.com/is/image/PetSmart/5149891?$sclp-prd-main_large$" },
         { id: 6, name: 'Canned Tuna 6 Pack', price: 88, rating: 3, url: "https://s7d2.scene7.com/is/image/PetSmart/5149891?$sclp-prd-main_large$" },
         { id: 7, name: 'Pair of Socks', price: 12, rating: 1, url: "https://s7d2.scene7.com/is/image/PetSmart/5149891?$sclp-prd-main_large$" }        
-      ]          
+      ]
     }
   }  
 }
